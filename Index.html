@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envíos Internacionales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.5em;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #002244;
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        section {
+            padding: 40px;
+            text-align: center;
+        }
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .service {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tracking {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 20px auto;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #004080;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ffcc00;
+            color: #002244;
+        }
+        footer {
+            background: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            width: 100%;
+        }
+    </style>
+    <script>
+        async function trackShipment() {
+            const trackingNumber = document.getElementById("trackingNumber").value;
+            
+            try {
+                const response = await fetch("tracking.json");
+                const trackingData = await response.json();
+                
+                const status = trackingData[trackingNumber] || "Número de seguimiento no encontrado";
+                document.getElementById("trackingResult").innerText = status;
+            } catch (error) {
+                document.getElementById("trackingResult").innerText = "Error cargando datos de seguimiento";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Envíos Internacionales</h1>
+        <p>Tu socio confiable en logística global</p>
+    </header>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <section id="inicio">
+        <h2>Bienvenido a Envíos Internacionales</h2>
+        <p>Con más de 16 años de experiencia en el sector de envíos y logística.</p>
+    </section>
+    <section id="servicios">
+        <h2>Nuestros Servicios</h2>
+        <div class="services">
+            <div class="service">
+                <h3>Envíos Rápidos</h3>
+                <p>Garantizamos tiempos de entrega eficientes y seguros.</p>
+            </div>
+            <div class="service">
+                <h3>Rastreo 24/7</h3>
+                <p>Sigue tu paquete en todo momento con nuestra plataforma.</p>
+            </div>
+            <div class="service">
+                <h3>Protección de Paquetes</h3>
+                <p>Aseguramos tus envíos con el mejor cuidado.</p>
+            </div>
+        </div>
+    </section>
+    <section class="tracking">
+        <h2>Seguimiento de Envío</h2>
+        <input type="text" id="trackingNumber" placeholder="Ingrese su número de seguimiento">
+        <button onclick="trackShipment()">Rastrear</button>
+        <p id="trackingResult"></p>
+    </section>
+    <section id="clientes">
+        <h2>Clientes Satisfechos</h2>
+        <p>Más de 10,000 clientes confían en nosotros.</p>
+    </section>
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Email: contacto@enviosinternacionales.com</p>
+        <p>Teléfono: +123 456 789</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Envíos Internacionales. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

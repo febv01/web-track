@@ -1,0 +1,8 @@
+{
+    "123456": "En tránsito",
+    "654321": "Entregado",
+    "789012": "Pendiente de envío",
+    "111222": "En aduana",
+    "333444": "Reparto en curso",
+    "555666": "Retrasado"
+}
